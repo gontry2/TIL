@@ -83,7 +83,7 @@ Changes to be committed:
         new file:   "\353\204\244\353\252\250\353\260\224\354\247\200 \354\212\244\355\217\260\354\247\200\353\260\245.png"
 
 ```
-
+[Local Area]
 Working directory - add -> Staging Area - commit -> Version(commit)
 
 
