@@ -127,3 +127,26 @@ nothing to commit, working tree clean
 
 
 
+## push to origin master
+
+```bash
+$ git remote add origin https://github.com/gontry2/TIL.git
+$ git push -u origin master
+
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (14/14), 33.50 KiB | 8.37 MiB/s, done.
+Total 14 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), done.
+To https://github.com/gontry2/TIL.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+```
+
+
+
+! denied 뜨면
+자격증명 관리자에서 windows자격 증명에서 github.com 제거 후 다시 git push origin master
+
