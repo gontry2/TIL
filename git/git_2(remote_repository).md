@@ -23,7 +23,17 @@ origin  https://github.com/gontry2/TIL.git (push)
 
 
 
-## 원격 저장소에 `push`
+## 1. 원격 저장소 복제
+
+```bash
+$ git clone {url}
+```
+
+* 해당 명령어를 입력한 위치에 원격저장소 이름으로 폴더가 생기며, 저장소가 복제된다.
+
+
+
+## 2. 원격 저장소에 `push`
 
 ```bash
 $ git push -u origin master
@@ -39,3 +49,14 @@ To https://github.com/gontry2/TIL.git
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 ```
 
+* 원격저장소(`origin`)의 `master` 브랜치로 기록된 커밋(버전)이 업데이트된다.
+
+
+
+## 3. `pull`
+
+```bash
+$ git pull origin master
+```
+
+* 원격저장소(`origin`)의 `master` 브랜치에 기록된 커밋(버전)이 현재 로컬 저장소로 받아온다. (`fetch` + `merge`)

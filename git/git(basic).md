@@ -127,7 +127,7 @@ nothing to commit, working tree clean
 
 
 
-## push to origin master
+## 4. push to origin master
 
 ```bash
 $ git remote add origin https://github.com/gontry2/TIL.git
@@ -149,4 +149,135 @@ Branch 'master' set up to track remote branch 'master' from 'origin'.
 
 ! denied 뜨면
 자격증명 관리자에서 windows자격 증명에서 github.com 제거 후 다시 git push origin master
+
+
+
+## 5. 기타 명령어
+
+### 1)  `restore`
+
+작업공간(working directory)의 변경사항을 버린다.
+
+```bash
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  # 힌트!
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   CLI.txt
+
+no changes added to commit (use "git add" and/or "git commit")
+$ git restore CLI.txt
+```
+
+* --staged 옵션을 활용하면, staging area를 취소( `add` 명령어의 반대)
+
+  ```bash
+  $ git add .
+  $ git status
+  On branch master
+  Changes to be committed:
+    (use "git restore --staged <file>..." to unstage)
+          modified:   CLI.txt
+  
+  $ git restore --staged CLI.txt
+  $ git status
+  On branch master
+  Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+          modified:   CLI.txt
+  
+  no changes added to commit (use "git add" and/or "git commit -a")
+  ```
+
+  
+
+### 2) 커밋 메시지 변경 `--amend`
+
+```ba
+$ git commit --amend
+```
+
+* vim 편집기가 실행된다.
+
+* `i`: 편집 모드로 변경되어서 메시지 변경 가능
+
+* `esc` + `:wq` : 저장하고 종료
+
+* **주의!!** 공개된 커밋은 절대 변경 금지.(push를 이미 했을 경우)
+
+  ```bash
+  $ git log --oneline
+  00a6259 (HEAD -> master) TEest
+  f7dc503 First commit
+  
+  $ git commit --amend
+  [master 4d42f0f] Test
+   Date: Fri Aug 21 16:17:42 2020 +0900
+   1 file changed, 1 insertion(+)
+  
+  $ git log --oneline
+  4d42f0f (HEAD -> master) Test
+  f7dc503 First commit
+  ```
+
+  * 커밋 시 특정 파일을 빠트린 경우 아래와 같이 활용할 수 있다.
+
+    ```bash
+    $ git add omit.html
+    $ git commit --ammend
+    ```
+
+    
+
+## 3) `revert` vs `reset`
+
+1. `revert`: 되돌렸다는 커밋이 발생된다.
+
+   ```bash
+   $ git revert 특정시점
+   ```
+
+2. `reset`: 커밋 자체를 지운다.(원격 저장소에 공개된 이력의 경우 주의!!)
+
+   ```bash
+   $ git reset 특정시점
+   ```
+
+   * `--mixed`: 기본 설정
+     * 해당 커밋 이후 변경사항을 staging area에 보관
+   * `--hard`
+     * 해당 커밋 이후 변경사항을 모두 삭제
+   * `--soft`
+     * 해당 커밋 이후 변경사항 및 working directory내용 보관
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
