@@ -7,6 +7,7 @@
 ## 목차
 
 1. [GIT](./git/)
+2. [Algorithms](./algorithms/)
 
 
 
