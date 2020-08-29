@@ -1,4 +1,4 @@
-# Web Scraper in Python
+# Web Scraper in Python(indeed)
 
 [beutifulsoup site](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
@@ -109,6 +109,24 @@ def extract_indeed_jobs(last_page):
 ...
 
 indeed_jobs = extract_indeed_jobs(last_indeed_page)
+```
+
+
+
+```python
+# indeed.py
+...
+
+def get_jobs():
+    last_page = extract_indeed_pages()
+    jobs = extract_indeed_jobs(last_page)
+    return jobs
+
+
+# main.py
+from indeed import get_jobs as get_indeed_jobs
+indeed_jobs = get_indeed_jobs()
+print(indeed_jobs)
 ```
 
 
