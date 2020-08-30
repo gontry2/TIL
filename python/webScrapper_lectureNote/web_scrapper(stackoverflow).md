@@ -22,12 +22,17 @@ def extract_job(html):
     title = html.find("div", {"class":"-title"}).find("h2").find("a")["title"]
     # recursive=False > span안의 span까지 가져오는 것을 방지
     company, location = html.find("div", {"class":"-company"}).find_all("span", recursive=False)
+    company = company.get_text(strip=True)
+    location = location.get_text(strip=True).strip("-").strip("\r").strip("\n")
+    job-id = html["data-jobid"]
     
-	return {"title": title}
+	return {"title": title, "company": company, "location": location, "apply_link" : f"https://stackoverflow.com/jobs/{job_id}"}
+
 
 def extract_jobs(last_page):
     jobs = []
     for page in range(last_page):
+        print(f"Scrapping SO: Page {page}")
         result = requests.get(f"{URL}&pg={page+1}")
         soup = BeautifulSoup(result.text, "html.parse")
         results = soup.find_all("div", {"class":"-job"})
@@ -42,3 +47,36 @@ def get_jobs():
     return []
 ```
 
+```python
+# main.py
+from indeed import get_jobs as get_indeed_jobs
+from so import get_jobs as get_so_jobs
+from save import save_to_file
+
+so_jobs = get_so_jobs()
+indeed_jobs = get_indeed_jobs()
+jobs = so_jobs + indeed_jobs
+save_to_file(jobs)
+
+# Comma Separeted Values
+
+
+```
+
+```python
+# save.py
+import csv
+
+def save_to_file(jobs):
+    file = open("jobs.csv", mode="w")
+    writer = csv.writer(file)
+    wirter.writerow("title", "company", "location", "link")
+    for job in jobs:
+        writer.writerow(list(job.values()))
+    return
+    
+```
+
+
+
+출처: [노마드 아카데미(Python으로 웹 스크래퍼 만들기)](https://nomadcoders.co/python-for-beginners/lobby)

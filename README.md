@@ -8,6 +8,7 @@
 
 1. [GIT](./git/)
 2. [Algorithms](./algorithms/)
+3. [Python](./python/)
 
 
 
