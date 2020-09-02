@@ -126,7 +126,8 @@ def report():
         return redirect("/")
     return render_template("report.html", searchingBy=word, resultNumber=len(jobs), jobs=jobs)
 
-@app.route("/export"):
+@app.route("/export")
+def export():
     try:
     	word = request.args.get('word')
         if not word:

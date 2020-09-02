@@ -367,3 +367,21 @@ Deleted branch feature/blog (was 6c5fbda).
     ```
 
     
+
+## Github Flow
+
+### 1. shared repo (초대를 받은 경우)
+
+* (merge를 local에서 안하고) branch에서 작업하고, 거기서 push
+* pull request를 보냄 (reviewer 선택가능)
+* merge하면 합쳐짐
+
+
+
+### 2. Fork (초대를 받지 않은 경우)
+
+* 다른사람의 repo를 Fork함
+* 본인 github 저장소를 clone
+* 내용 수정 후, commit
+* 본인 github로 push
+* pull request를 보냄
