@@ -1,8 +1,8 @@
 # NumPy (Numeric Python)
 
-> 행렬이나 벡터와 같은 다차원 데이터의 연산을 쉽게 처리할 수 있도록 지원하는 파이썬 라이브러리.
+> 행렬이나 벡터와 같은 다차원 데이터의 연산을 쉽게 처리할 수 있도록 지원하는 파이썬 라이브러리
 >
-> 데이터 구조 외에 수치 계산을 위한 효율적인 기능을 제공한다.
+> 데이터 구조 외에 수치 계산을 위한 효율적인 기능을 제공한다
 
 
 
@@ -27,9 +27,9 @@
   * `len(array)`: 첫번째 차원의 요소 개수를 리턴. (1차원은 size, len() 결과값이 동일함)
   * `reshape(shape)`: 차원을 변경함. View 형태로 만들어짐. -1을 하면 알아서 계산해서 넣으라는 뜻
   * `ravel()`: ndarray의 모든 요소가 포함된 1차원 vector를 view형태로 리턴
-  * `arr.reshape((2, -1)).copy()`: list 형태로 만들어짐. 원소의 개수가 같지 않으면 일어나지 않음(cf. resize())
+  * `arr.reshape((2, -1)).copy()`: list 형태로 만들어짐. 원소의 개수가 같지 않으면 일어나지 않음 (cf. resize())
   * `astype(dtype)`: dtype을 변경함. float64 -> int32: 소수점 이하 버림
-  * `resize(shape)`:  reshape와 유사. view가 아닌 원본이 변경됨. 원본의 개수가 달라도 됨(0으로 채워지거나 버림처리됨. cf. reshape())
+  * `resize(shape)`:  reshape와 유사. view가 아닌 원본이 변경됨. 원본의 개수가 달라도 됨 (0으로 채워지거나 버림처리됨. cf. reshape())
 
 * 생성방법
 
@@ -123,7 +123,7 @@
 2.  2차원 배열
    * arr[1, 2]
    * arr[1] [2]
-   * arr[2, :] : indexing과 slicing같이 사용
+   * arr[2, :] : indexing과 slicing같이 사용, 3행 전체
    * arr[1:3, :] : 1행, 2행 두개의 행을 가져옴
    * arr[1:3, :2] : 1행, 2행 중 0열 1열의 원소값 가져옴
 3.  **Boolean Indexing**
@@ -205,7 +205,7 @@
 
   * 3차원 이상일 경우 로직이 복잡해진다(중첩 for문)
 
-  *  `c_index` : C언어에서 사용하는 index기법을 사용, 1차원 vector에 사용
+  * `c_index` : C언어에서 사용하는 index기법을 사용, 1차원 vector에 사용
 
     ```python
     import numpy as np
@@ -217,10 +217,12 @@
         idx = it.index # iterator가 현재 가리키는 곳의 index숫자를 가져옴
         print(arr[idx], end=' ')
         it.iternext() # iterator를 다음 요소로 이동시키는 작업
+        
+   >> 1 2 3 4 5
     ```
 
   * `multi_index`: tuple형식으로 index 반환, 다차원 vector에 사용
-
+  
     ```python
     arr = np.array([[1,2,3], [4,5,6]])
     it = np.nditer(arr, flags=['multi_index'])
@@ -228,9 +230,11 @@
     while not it.finished:
         idx = it.multi_index
         print(arr[idx], end=' ')
-        it.iternext()
+      it.iternext()
+        
+  >> 1 2 3 4 5 6 
     ```
-
+    
     
 
 ## 비교연산
